@@ -75,7 +75,7 @@ public abstract class SkeletonEntityMixin extends AbstractSkeletonEntity {
 		if (!world.isClient() && this.isAlive() && !this.isAiDisabled()) {
 			BlockPos pos = this.getBlockPos();
 			RegistryEntry<Biome> biome = world.getBiome(pos);
-			if (this.isSubmergedIn(FluidTags.WATER) && biome == BiomeKeys.WARM_OCEAN) {
+			if (this.isSubmergedIn(FluidTags.WATER) && biome.isIn(SunkenSkeletonMod.TAG_SPAWNS_SUNKEN_SKELETONS)) {
 				if (this.Mixin_IsConvertingInWater()) {
 					--this.ticksUntilWaterConversion;
 					if (this.ticksUntilWaterConversion < 0) this.Mixin_ConvertToSunkenSkeleton();

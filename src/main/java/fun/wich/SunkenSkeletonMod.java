@@ -18,20 +18,18 @@ import net.minecraft.registry.Registries;
 import net.minecraft.registry.Registry;
 import net.minecraft.registry.RegistryKey;
 import net.minecraft.registry.RegistryKeys;
+import net.minecraft.registry.tag.TagKey;
 import net.minecraft.sound.SoundEvent;
 import net.minecraft.util.Identifier;
 import net.minecraft.world.Heightmap;
+import net.minecraft.world.biome.Biome;
 import net.minecraft.world.biome.BiomeKeys;
 import org.jetbrains.annotations.NotNull;
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
-import org.spongepowered.asm.mixin.Unique;
 
 import java.util.function.Function;
 
 public class SunkenSkeletonMod implements ModInitializer {
 	public static final String MOD_ID = "wich";
-	public static final Logger LOGGER = LoggerFactory.getLogger(MOD_ID);
 
 	public static final SoundEvent ENTITY_SUNKEN_SKELETON_AMBIENT = register("entity.sunken_skeleton.ambient");
 	public static final SoundEvent ENTITY_SUNKEN_SKELETON_DEATH = register("entity.sunken_skeleton.death");
@@ -46,6 +44,8 @@ public class SunkenSkeletonMod implements ModInitializer {
 		Identifier id = Identifier.of(MOD_ID, path);
 		return Registry.register(Registries.SOUND_EVENT, id, SoundEvent.of(id));
 	}
+
+	public static final TagKey<Biome> TAG_SPAWNS_SUNKEN_SKELETONS = TagKey.of(RegistryKeys.BIOME, Identifier.of(MOD_ID, "spawns_sunken_skeletons"));
 
 	public static final EntityType<SunkenSkeletonEntity> SUNKEN_SKELETON = register(
 			"sunken_skeleton",
@@ -77,7 +77,7 @@ public class SunkenSkeletonMod implements ModInitializer {
 		FabricDefaultAttributeRegistry.register(SUNKEN_SKELETON, SunkenSkeletonEntity.createAbstractSkeletonAttributes());
 		//Spawning
 		SpawnRestriction.register(SUNKEN_SKELETON, SpawnLocationTypes.IN_WATER, Heightmap.Type.MOTION_BLOCKING_NO_LEAVES, SunkenSkeletonEntity::canSpawn);
-		BiomeModifications.addSpawn(BiomeSelectors.includeByKey(BiomeKeys.WARM_OCEAN),
+		BiomeModifications.addSpawn(BiomeSelectors.tag(TAG_SPAWNS_SUNKEN_SKELETONS),
 				SpawnGroup.MONSTER, SUNKEN_SKELETON, 55, 1, 4);
 		FabricDefaultAttributeRegistry.register(SUNKEN_SKELETON, SunkenSkeletonEntity.createAbstractSkeletonAttributes());
 		//Items
