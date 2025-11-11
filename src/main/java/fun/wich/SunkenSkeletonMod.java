@@ -23,8 +23,6 @@ import net.minecraft.sound.SoundEvent;
 import net.minecraft.util.Identifier;
 import net.minecraft.world.Heightmap;
 import net.minecraft.world.biome.Biome;
-import net.minecraft.world.biome.BiomeKeys;
-import org.jetbrains.annotations.NotNull;
 
 import java.util.function.Function;
 
@@ -57,7 +55,7 @@ public class SunkenSkeletonMod implements ModInitializer {
 					.maxTrackingRange(8)
 					.notAllowedInPeaceful()
 	);
-	private static @NotNull <T extends Entity> EntityType<T> register(String name, EntityType.Builder<T> type) {
+	private static <T extends Entity> EntityType<T> register(String name, EntityType.Builder<T> type) {
 		RegistryKey<EntityType<?>> key = RegistryKey.of(RegistryKeys.ENTITY_TYPE, Identifier.of(MOD_ID, name));
 		EntityType<T> entityType = type.build(key);
 		Registry.register(Registries.ENTITY_TYPE, key, entityType);
