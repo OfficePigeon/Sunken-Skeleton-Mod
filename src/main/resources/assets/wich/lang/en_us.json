@@ -1,0 +1,10 @@
+{
+  "entity.wich.sunken_skeleton": "Sunken Skeleton",
+  "item.wich.sunken_skeleton_spawn_egg": "Sunken Skeleton Spawn Egg",
+  "subtitles.entity.skeleton.converted_to_sunken_skeleton": "Skeleton converts to Sunken Skeleton",
+  "subtitles.entity.sunken_skeleton.ambient": "Sunken Skeleton rattles",
+  "subtitles.entity.sunken_skeleton.death": "Sunken Skeleton dies",
+  "subtitles.entity.sunken_skeleton.hurt": "Sunken Skeleton hurts",
+  "subtitles.entity.sunken_skeleton.step": "Sunken Skeleton steps",
+  "subtitles.entity.parrot.imitate.sunken_skeleton": "Parrot rattles"
+}

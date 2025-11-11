@@ -1,0 +1,6 @@
+{
+  "parent": "minecraft:item/generated",
+  "textures": {
+	"layer0": "wich:item/sunken_skeleton_spawn_egg"
+  }
+}

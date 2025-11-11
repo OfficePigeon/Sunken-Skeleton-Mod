@@ -1,0 +1,26 @@
+{
+  "entity.skeleton.converted_to_sunken_skeleton": {
+	"subtitle": "subtitles.entity.skeleton.converted_to_sunken_skeleton",
+	"sounds": [ "wich:mob/sunken_skeleton/idle1" ]
+  },
+  
+  "entity.sunken_skeleton.ambient": {
+	"subtitle": "subtitles.entity.sunken_skeleton.ambient",
+	"sounds": [ "wich:mob/sunken_skeleton/idle1", "wich:mob/sunken_skeleton/idle2", "wich:mob/sunken_skeleton/idle3" ]
+  },
+  "entity.sunken_skeleton.death": {
+	"subtitle": "subtitles.entity.mossy_skeleton.death",
+	"sounds": [
+	  { "name": "wich:mob/sunken_skeleton/death1", "volume": 0.75 },
+	  { "name": "wich:mob/sunken_skeleton/death2", "volume": 0.75 },
+	  { "name": "wich:mob/sunken_skeleton/death3", "volume": 0.75 } ]
+  },
+  "entity.sunken_skeleton.hurt": {
+	"subtitle": "subtitles.entity.mossy_skeleton.hurt",
+	"sounds": [ "wich:mob/sunken_skeleton/hurt1", "wich:mob/sunken_skeleton/hurt2", "wich:mob/sunken_skeleton/hurt3", "wich:mob/sunken_skeleton/hurt4" ]
+  },
+  "entity.sunken_skeleton.step": {
+	"subtitle": "subtitles.block.generic.footsteps",
+	"sounds": [ "wich:mob/sunken_skeleton/step1", "wich:mob/sunken_skeleton/step2", "wich:mob/sunken_skeleton/step3", "wich:mob/sunken_skeleton/step4" ]
+  }
+}

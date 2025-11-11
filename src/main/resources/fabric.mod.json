@@ -1,0 +1,28 @@
+{
+	"schemaVersion": 1,
+	"id": "wich_sunken-skeletons",
+	"version": "${version}",
+	"name": "Sunken Skeletons",
+	"description": "Adds the aquatic Sunken Skeleton from Minecraft Dungeons.",
+	"authors": [ "dovewich" ],
+	"contact": {
+		"homepage": "https://www.wich.fun/",
+		"sources": "https://github.com/OfficePigeon/Sunken-Skeleton-Mod"
+	},
+	"license": "",
+	"icon": "assets/wich/icon.png",
+	"environment": "*",
+	"entrypoints": {
+		"main": [ "fun.wich.SunkenSkeletonMod" ],
+		"client": [ "fun.wich.client.ModClient" ]
+	},
+	"mixins": [
+		"wich.mixins.json"
+	],
+	"depends": {
+		"fabricloader": ">=0.17.3",
+		"minecraft": ">=1.21.9",
+		"java": ">=21",
+		"fabric-api": "*"
+	}
+}

@@ -1,0 +1,200 @@
+{
+  "type": "minecraft:entity",
+  "pools": [
+	{
+	  "bonus_rolls": 0.0,
+	  "entries": [
+		{
+		  "type": "minecraft:item",
+		  "functions": [
+			{
+			  "add": false,
+			  "count": { "type": "minecraft:uniform", "max": 2.0, "min": 0.0 },
+			  "function": "minecraft:set_count"
+			},
+			{
+			  "count": { "type": "minecraft:uniform", "max": 1.0, "min": 0.0 },
+			  "enchantment": "minecraft:looting",
+			  "function": "minecraft:enchanted_count_increase"
+			}
+		  ],
+		  "name": "minecraft:arrow"
+		}
+	  ],
+	  "rolls": 1.0
+	},
+	{
+	  "bonus_rolls": 0.0,
+	  "entries": [
+		{
+		  "type": "minecraft:item",
+		  "functions": [
+			{
+			  "add": false,
+			  "count": { "type": "minecraft:uniform", "max": 2.0, "min": 0.0 },
+			  "function": "minecraft:set_count"
+			},
+			{
+			  "count": { "type": "minecraft:uniform", "max": 1.0, "min": 0.0 },
+			  "enchantment": "minecraft:looting",
+			  "function": "minecraft:enchanted_count_increase"
+			}
+		  ],
+		  "name": "minecraft:bone"
+		}
+	  ],
+	  "rolls": 1.0
+	},
+	{
+	  "bonus_rolls": 0.0,
+	  "conditions": [
+		{ "condition": "minecraft:killed_by_player" },
+		{
+		  "condition": "minecraft:entity_properties",
+		  "predicate": { "nbt": "{Variant:0}" },
+		  "entity": "this"
+		}
+	  ],
+	  "entries": [
+		{
+		  "type": "minecraft:item",
+		  "functions": [
+			{
+			  "add": false,
+			  "count": { "type": "minecraft:uniform", "max": 1.0, "min": 0.0 },
+			  "function": "minecraft:set_count"
+			},
+			{
+			  "count": { "type": "minecraft:uniform", "max": 1.0, "min": 0.0 },
+			  "enchantment": "minecraft:looting",
+			  "function": "minecraft:enchanted_count_increase",
+			  "limit": 1
+			}
+		  ],
+		  "name": "minecraft:bubble_coral",
+		  "weight": 25
+		},
+		{
+		  "type": "minecraft:item",
+		  "functions": [
+			{
+			  "add": false,
+			  "count": { "type": "minecraft:uniform", "max": 1.0, "min": 0.0 },
+			  "function": "minecraft:set_count"
+			},
+			{
+			  "count": { "type": "minecraft:uniform", "max": 1.0, "min": 0.0 },
+			  "enchantment": "minecraft:looting",
+			  "function": "minecraft:enchanted_count_increase",
+			  "limit": 1
+			}
+		  ],
+		  "name": "minecraft:bubble_coral_fan",
+		  "weight": 75
+		}
+	  ],
+	  "rolls": 1.0
+	},
+	{
+	  "bonus_rolls": 0.0,
+	  "conditions": [
+		{ "condition": "minecraft:killed_by_player" },
+		{
+		  "condition": "minecraft:entity_properties",
+		  "predicate": { "nbt": "{Variant:1}" },
+		  "entity": "this"
+		}
+	  ],
+	  "entries": [
+		{
+		  "type": "minecraft:item",
+		  "functions": [
+			{
+			  "add": false,
+			  "count": { "type": "minecraft:uniform", "max": 1.0, "min": 0.0 },
+			  "function": "minecraft:set_count"
+			},
+			{
+			  "count": { "type": "minecraft:uniform", "max": 1.0, "min": 0.0 },
+			  "enchantment": "minecraft:looting",
+			  "function": "minecraft:enchanted_count_increase",
+			  "limit": 1
+			}
+		  ],
+		  "name": "minecraft:fire_coral",
+		  "weight": 25
+		},
+		{
+		  "type": "minecraft:item",
+		  "functions": [
+			{
+			  "add": false,
+			  "count": { "type": "minecraft:uniform", "max": 1.0, "min": 0.0 },
+			  "function": "minecraft:set_count"
+			},
+			{
+			  "count": { "type": "minecraft:uniform", "max": 1.0, "min": 0.0 },
+			  "enchantment": "minecraft:looting",
+			  "function": "minecraft:enchanted_count_increase",
+			  "limit": 1
+			}
+		  ],
+		  "name": "minecraft:fire_coral_fan",
+		  "weight": 75
+		}
+	  ],
+	  "rolls": 1.0
+	},
+	{
+	  "bonus_rolls": 0.0,
+	  "conditions": [
+		{ "condition": "minecraft:killed_by_player" },
+		{
+		  "condition": "minecraft:entity_properties",
+		  "predicate": { "nbt": "{Variant:2}" },
+		  "entity": "this"
+		}
+	  ],
+	  "entries": [
+		{
+		  "type": "minecraft:item",
+		  "functions": [
+			{
+			  "add": false,
+			  "count": { "type": "minecraft:uniform", "max": 1.0, "min": 0.0 },
+			  "function": "minecraft:set_count"
+			},
+			{
+			  "count": { "type": "minecraft:uniform", "max": 1.0, "min": 0.0 },
+			  "enchantment": "minecraft:looting",
+			  "function": "minecraft:enchanted_count_increase",
+			  "limit": 1
+			}
+		  ],
+		  "name": "minecraft:horn_coral",
+		  "weight": 25
+		},
+		{
+		  "type": "minecraft:item",
+		  "functions": [
+			{
+			  "add": false,
+			  "count": { "type": "minecraft:uniform", "max": 1.0, "min": 0.0 },
+			  "function": "minecraft:set_count"
+			},
+			{
+			  "count": { "type": "minecraft:uniform", "max": 1.0, "min": 0.0 },
+			  "enchantment": "minecraft:looting",
+			  "function": "minecraft:enchanted_count_increase",
+			  "limit": 1
+			}
+		  ],
+		  "name": "minecraft:horn_coral_fan",
+		  "weight": 75
+		}
+	  ],
+	  "rolls": 1.0
+	}
+  ],
+  "random_sequence": "wich:entities/sunken_skeleton"
+}
