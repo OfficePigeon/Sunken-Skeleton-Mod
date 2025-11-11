@@ -77,8 +77,8 @@ public class SunkenSkeletonMod implements ModInitializer {
 		FabricDefaultAttributeRegistry.register(SUNKEN_SKELETON, SunkenSkeletonEntity.createAbstractSkeletonAttributes());
 		//Spawning
 		SpawnRestriction.register(SUNKEN_SKELETON, SpawnLocationTypes.IN_WATER, Heightmap.Type.MOTION_BLOCKING_NO_LEAVES, SunkenSkeletonEntity::canSpawn);
-		BiomeModifications.addSpawn(BiomeSelectors.includeByKey(BiomeKeys.LUKEWARM_OCEAN, BiomeKeys.DEEP_LUKEWARM_OCEAN, BiomeKeys.WARM_OCEAN),
-				SpawnGroup.MONSTER, SUNKEN_SKELETON, 15, 1, 4);
+		BiomeModifications.addSpawn(BiomeSelectors.includeByKey(BiomeKeys.WARM_OCEAN),
+				SpawnGroup.MONSTER, SUNKEN_SKELETON, 55, 1, 4);
 		FabricDefaultAttributeRegistry.register(SUNKEN_SKELETON, SunkenSkeletonEntity.createAbstractSkeletonAttributes());
 		//Items
 		ItemGroupEvents.modifyEntriesEvent(ItemGroups.SPAWN_EGGS).register(itemGroup -> itemGroup.add(SUNKEN_SKELETON_SPAWN_EGG));
