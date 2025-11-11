@@ -46,6 +46,7 @@ public class SunkenSkeletonMod implements ModInitializer {
 	}
 
 	public static final TagKey<Biome> TAG_SPAWNS_SUNKEN_SKELETONS = TagKey.of(RegistryKeys.BIOME, Identifier.of(MOD_ID, "spawns_sunken_skeletons"));
+	public static final TagKey<Biome> TAG_SKELETONS_CAN_BECOME_SUNKEN = TagKey.of(RegistryKeys.BIOME, Identifier.of(MOD_ID, "skeletons_can_become_sunken"));
 
 	public static final EntityType<SunkenSkeletonEntity> SUNKEN_SKELETON = register(
 			"sunken_skeleton",

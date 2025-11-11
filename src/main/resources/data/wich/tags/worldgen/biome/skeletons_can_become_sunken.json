@@ -1,0 +1,5 @@
+{
+  "values": [
+	{ "id": "#wich:spawns_sunken_skeletons", "required": false }
+  ]
+}
