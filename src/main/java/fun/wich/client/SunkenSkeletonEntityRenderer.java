@@ -23,7 +23,7 @@ import net.minecraft.util.Identifier;
 @Environment(EnvType.CLIENT)
 public class SunkenSkeletonEntityRenderer extends BipedEntityRenderer<SunkenSkeletonEntity, SunkenSkeletonEntityRenderState, SunkenSkeletonEntityModel> {
 	public SunkenSkeletonEntityRenderer(EntityRendererFactory.Context context) {
-		this(context, EntityModelLayers.SKELETON_EQUIPMENT, new SunkenSkeletonEntityModel(context.getPart(ModClient.SUNKEN_SKELETON)));
+		this(context, EntityModelLayers.SKELETON_EQUIPMENT, new SunkenSkeletonEntityModel(context.getPart(SunkenSkeletonsClient.SUNKEN_SKELETON)));
 	}
 	public SunkenSkeletonEntityRenderer(EntityRendererFactory.Context context, EquipmentModelData<EntityModelLayer> equipmentModelData, SunkenSkeletonEntityModel skeletonEntityModel) {
 		super(context, skeletonEntityModel, 0.5F);

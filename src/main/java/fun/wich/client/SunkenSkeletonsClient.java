@@ -7,17 +7,13 @@ import net.fabricmc.api.Environment;
 import net.fabricmc.fabric.api.client.rendering.v1.EntityModelLayerRegistry;
 import net.minecraft.client.render.entity.EntityRendererFactories;
 import net.minecraft.client.render.entity.model.EntityModelLayer;
-import net.minecraft.client.render.entity.model.EquipmentModelData;
 import net.minecraft.util.Identifier;
 
 @Environment(EnvType.CLIENT)
-public class ModClient implements ClientModInitializer {
-	public static final EntityModelLayer SUNKEN_SKELETON = MakeModelLayer("sunken_skeleton", "main");
-	private static EntityModelLayer MakeModelLayer(String id, String name) {
-		return new EntityModelLayer(Identifier.of(SunkenSkeletonMod.MOD_ID, id), name);
-	}
-	private static EquipmentModelData<EntityModelLayer> registerEquipment(String id) {
-		return new EquipmentModelData<>(MakeModelLayer(id, "helmet"), MakeModelLayer(id, "chestplate"), MakeModelLayer(id, "leggings"), MakeModelLayer(id, "boots"));
+public class SunkenSkeletonsClient implements ClientModInitializer {
+	public static final EntityModelLayer SUNKEN_SKELETON = MakeModelLayer();
+	private static EntityModelLayer MakeModelLayer() {
+		return new EntityModelLayer(Identifier.of(SunkenSkeletonMod.MOD_ID, "sunken_skeleton"), "main");
 	}
 	@Override
 	public void onInitializeClient() {
