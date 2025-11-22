@@ -14,9 +14,7 @@
 	"environment": "*",
 	"entrypoints": {
 		"main": [ "fun.wich.SunkenSkeletonMod" ],
-		"client": [
-		  "fun.wich.client.SunkenSkeletonsClient"
-		]
+		"client": [ "fun.wich.client.SunkenSkeletonsClient" ]
 	},
 	"mixins": [
 		"wich.sunkenskeletons.mixins.json"

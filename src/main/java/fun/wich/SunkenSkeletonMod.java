@@ -7,10 +7,6 @@ import net.fabricmc.fabric.api.biome.v1.BiomeSelectors;
 import net.fabricmc.fabric.api.itemgroup.v1.ItemGroupEvents;
 import net.fabricmc.fabric.api.object.builder.v1.entity.FabricDefaultAttributeRegistry;
 import net.minecraft.entity.*;
-import net.minecraft.entity.data.DataTracker;
-import net.minecraft.entity.data.TrackedData;
-import net.minecraft.entity.data.TrackedDataHandlerRegistry;
-import net.minecraft.entity.mob.SkeletonEntity;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemGroups;
 import net.minecraft.item.SpawnEggItem;
@@ -35,8 +31,6 @@ public class SunkenSkeletonMod implements ModInitializer {
 	public static final SoundEvent ENTITY_SUNKEN_SKELETON_STEP = register("entity.sunken_skeleton.step");
 	public static final SoundEvent ENTITY_SKELETON_CONVERTED_TO_SUNKEN_SKELETON = register("entity.skeleton.converted_to_sunken_skeleton");
 	public static final SoundEvent ENTITY_PARROT_IMITATE_SUNKEN_SKELETON = register("entity.parrot.imitate.sunken_skeleton");
-
-	public static final TrackedData<Boolean> SKELETON_CONVERTING_IN_WATER = DataTracker.registerData(SkeletonEntity.class, TrackedDataHandlerRegistry.BOOLEAN);
 
 	private static SoundEvent register(String path) {
 		Identifier id = Identifier.of(MOD_ID, path);
@@ -80,8 +74,5 @@ public class SunkenSkeletonMod implements ModInitializer {
 				SpawnGroup.MONSTER, SUNKEN_SKELETON, 55, 1, 4);
 		//Items
 		ItemGroupEvents.modifyEntriesEvent(ItemGroups.SPAWN_EGGS).register(itemGroup -> itemGroup.add(SUNKEN_SKELETON_SPAWN_EGG));
-
-
-
 	}
 }

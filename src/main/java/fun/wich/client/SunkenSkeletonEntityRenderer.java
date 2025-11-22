@@ -44,8 +44,10 @@ public class SunkenSkeletonEntityRenderer extends BipedEntityRenderer<SunkenSkel
 		skeletonEntityRenderState.holdingBow = entity.getMainHandStack().isOf(Items.BOW);
 		//Sunken Skeleton Entity
 		skeletonEntityRenderState.variant = SunkenSkeletonVariant.get(entity);
-		ItemStack stack = entity.hasStackEquipped(EquipmentSlot.HEAD) ? entity.getEquippedStack(EquipmentSlot.HEAD) : ItemStack.EMPTY;
-		skeletonEntityRenderState.showFans = stack.isEmpty() || !(stack.isIn(ItemTags.HEAD_ARMOR) || stack.getItem() instanceof BlockItem);
+		ItemStack stack = entity.getEquippedStack(EquipmentSlot.HEAD);
+		if (stack.isIn(ItemTags.HEAD_ARMOR)) skeletonEntityRenderState.showFans = false;
+		else if (stack.getItem() instanceof BlockItem) skeletonEntityRenderState.showFans = false;
+		else skeletonEntityRenderState.showFans = true;
 	}
 	@Override
 	protected boolean isShaking(SunkenSkeletonEntityRenderState state) { return state.shaking; }
