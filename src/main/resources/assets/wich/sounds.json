@@ -20,8 +20,8 @@
 	"sounds": [ "wich:mob/sunken_skeleton/hurt1", "wich:mob/sunken_skeleton/hurt2", "wich:mob/sunken_skeleton/hurt3", "wich:mob/sunken_skeleton/hurt4" ]
   },
   "entity.sunken_skeleton.step": {
-	"subtitle": "subtitles.block.generic.footsteps",
-	"sounds": [ "wich:mob/sunken_skeleton/step1", "wich:mob/sunken_skeleton/step2", "wich:mob/sunken_skeleton/step3", "wich:mob/sunken_skeleton/step4" ]
+	"sounds": [ "wich:mob/sunken_skeleton/step1", "wich:mob/sunken_skeleton/step2", "wich:mob/sunken_skeleton/step3", "wich:mob/sunken_skeleton/step4" ],
+	"subtitle": "subtitles.block.generic.footsteps"
   },
   "entity.parrot.imitate.sunken_skeleton": {
 	"sounds": [ { "name": "wich:entity.sunken_skeleton.ambient", "pitch": 1.8, "type": "event", "volume": 0.6 } ],

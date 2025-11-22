@@ -1,0 +1,10 @@
+{
+  "entity.wich.sunken_skeleton": "Sunken Bag o' bones",
+  "item.wich.sunken_skeleton_spawn_egg": "Sunken Bag o' bones Cackle Fruit",
+  "subtitles.entity.skeleton.converted_to_sunken_skeleton": "Bag o' bones sinks",
+  "subtitles.entity.sunken_skeleton.ambient": "Sunken Bag o' bones rattles",
+  "subtitles.entity.sunken_skeleton.death": "Sunken Bag o' bones perishes",
+  "subtitles.entity.sunken_skeleton.hurt": "Sunken Bag o' bones hurts",
+  "subtitles.entity.sunken_skeleton.step": "Sunken Bag o' bones steps",
+  "subtitles.entity.parrot.imitate.sunken_skeleton": "Yer' best matey be rattlin'"
+}
