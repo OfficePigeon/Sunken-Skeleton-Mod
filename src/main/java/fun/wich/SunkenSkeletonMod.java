@@ -1,5 +1,6 @@
 package fun.wich;
 
+import fun.wich.mixin.LootTablesMixin;
 import net.fabricmc.api.ModInitializer;
 
 import net.fabricmc.fabric.api.biome.v1.BiomeModifications;
@@ -10,6 +11,7 @@ import net.minecraft.entity.*;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemGroups;
 import net.minecraft.item.SpawnEggItem;
+import net.minecraft.loot.LootTable;
 import net.minecraft.registry.Registries;
 import net.minecraft.registry.Registry;
 import net.minecraft.registry.RegistryKey;
@@ -29,6 +31,7 @@ public class SunkenSkeletonMod implements ModInitializer {
 	public static final SoundEvent ENTITY_SUNKEN_SKELETON_DEATH = register("entity.sunken_skeleton.death");
 	public static final SoundEvent ENTITY_SUNKEN_SKELETON_HURT = register("entity.sunken_skeleton.hurt");
 	public static final SoundEvent ENTITY_SUNKEN_SKELETON_STEP = register("entity.sunken_skeleton.step");
+	public static final SoundEvent ENTITY_SUNKEN_SKELETON_SHEAR = register("entity.sunken_skeleton.shear");
 	public static final SoundEvent ENTITY_SKELETON_CONVERTED_TO_SUNKEN_SKELETON = register("entity.skeleton.converted_to_sunken_skeleton");
 	public static final SoundEvent ENTITY_PARROT_IMITATE_SUNKEN_SKELETON = register("entity.parrot.imitate.sunken_skeleton");
 
@@ -63,6 +66,7 @@ public class SunkenSkeletonMod implements ModInitializer {
 		Registry.register(Registries.ITEM, key, item);
 		return item;
 	}
+	public static final RegistryKey<LootTable> SUNKEN_SKELETON_SHEARING = LootTablesMixin.registerLootTable(RegistryKey.of(RegistryKeys.LOOT_TABLE, Identifier.of(MOD_ID, "shearing/sunken_skeleton")));
 
 	@Override
 	public void onInitialize() {

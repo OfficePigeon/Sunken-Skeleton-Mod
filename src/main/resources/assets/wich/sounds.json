@@ -3,7 +3,6 @@
 	"subtitle": "subtitles.entity.skeleton.converted_to_sunken_skeleton",
 	"sounds": [ "wich:mob/sunken_skeleton/idle1" ]
   },
-  
   "entity.sunken_skeleton.ambient": {
 	"subtitle": "subtitles.entity.sunken_skeleton.ambient",
 	"sounds": [ "wich:mob/sunken_skeleton/idle1", "wich:mob/sunken_skeleton/idle2", "wich:mob/sunken_skeleton/idle3" ]
@@ -22,6 +21,10 @@
   "entity.sunken_skeleton.step": {
 	"sounds": [ "wich:mob/sunken_skeleton/step1", "wich:mob/sunken_skeleton/step2", "wich:mob/sunken_skeleton/step3", "wich:mob/sunken_skeleton/step4" ],
 	"subtitle": "subtitles.block.generic.footsteps"
+  },
+  "entity.sunken_skeleton.shear": {
+	"sounds": [ "mob/sheep/shear" ],
+	"subtitle": "subtitles.item.shears.shear"
   },
   "entity.parrot.imitate.sunken_skeleton": {
 	"sounds": [ { "name": "wich:entity.sunken_skeleton.ambient", "pitch": 1.8, "type": "event", "volume": 0.6 } ],

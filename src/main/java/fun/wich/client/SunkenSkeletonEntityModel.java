@@ -35,4 +35,9 @@ public class SunkenSkeletonEntityModel extends SkeletonEntityModel<SunkenSkeleto
 		root.addChild(EntityModelPartNames.LEFT_LEG, ModelPartBuilder.create().uv(0, 16).mirrored().cuboid(-1, 0, -1, 2, 12, 2), ModelTransform.origin(2, 12, 0));
 		return TexturedModelData.of(modelData, 64, 32);
 	}
+	@Override
+	public void setAngles(SunkenSkeletonEntityRenderState state) {
+		super.setAngles(state);
+		for (ModelPart part : this.fans) part.visible = state.showFans;
+	}
 }

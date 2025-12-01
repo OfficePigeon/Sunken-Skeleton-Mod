@@ -4,14 +4,10 @@ import fun.wich.SunkenSkeletonEntity;
 import fun.wich.SunkenSkeletonVariant;
 import net.fabricmc.api.EnvType;
 import net.fabricmc.api.Environment;
-import net.minecraft.client.model.ModelPart;
-import net.minecraft.client.render.command.OrderedRenderCommandQueue;
 import net.minecraft.client.render.entity.BipedEntityRenderer;
 import net.minecraft.client.render.entity.EntityRendererFactory;
 import net.minecraft.client.render.entity.feature.ArmorFeatureRenderer;
 import net.minecraft.client.render.entity.model.*;
-import net.minecraft.client.render.state.CameraRenderState;
-import net.minecraft.client.util.math.MatrixStack;
 import net.minecraft.entity.EquipmentSlot;
 import net.minecraft.item.BlockItem;
 import net.minecraft.item.ItemStack;
@@ -36,18 +32,18 @@ public class SunkenSkeletonEntityRenderer extends BipedEntityRenderer<SunkenSkel
 	@Override
 	public SunkenSkeletonEntityRenderState createRenderState() { return new SunkenSkeletonEntityRenderState(); }
 	@Override
-	public void updateRenderState(SunkenSkeletonEntity entity, SunkenSkeletonEntityRenderState skeletonEntityRenderState, float f) {
+	public void updateRenderState(SunkenSkeletonEntity entity, SunkenSkeletonEntityRenderState state, float f) {
 		//Abstract Skeleton Entity
-		super.updateRenderState(entity, skeletonEntityRenderState, f);
-		skeletonEntityRenderState.attacking = entity.isAttacking();
-		skeletonEntityRenderState.shaking = entity.isShaking();
-		skeletonEntityRenderState.holdingBow = entity.getMainHandStack().isOf(Items.BOW);
+		super.updateRenderState(entity, state, f);
+		state.attacking = entity.isAttacking();
+		state.shaking = entity.isShaking();
+		state.holdingBow = entity.getMainHandStack().isOf(Items.BOW);
 		//Sunken Skeleton Entity
-		skeletonEntityRenderState.variant = SunkenSkeletonVariant.get(entity);
+		state.variant = SunkenSkeletonVariant.get(entity);
 		ItemStack stack = entity.getEquippedStack(EquipmentSlot.HEAD);
-		if (stack.isIn(ItemTags.HEAD_ARMOR)) skeletonEntityRenderState.showFans = false;
-		else if (stack.getItem() instanceof BlockItem) skeletonEntityRenderState.showFans = false;
-		else skeletonEntityRenderState.showFans = true;
+		if (entity.isSheared()) state.showFans = false;
+		else if (stack.isIn(ItemTags.HEAD_ARMOR)) state.showFans = false;
+		else state.showFans = !(stack.getItem() instanceof BlockItem);
 	}
 	@Override
 	protected boolean isShaking(SunkenSkeletonEntityRenderState state) { return state.shaking; }
@@ -56,10 +52,5 @@ public class SunkenSkeletonEntityRenderer extends BipedEntityRenderer<SunkenSkel
 		return abstractSkeletonEntity.getMainArm() == arm && abstractSkeletonEntity.isAttacking() && abstractSkeletonEntity.getMainHandStack().isOf(Items.BOW)
 				? BipedEntityModel.ArmPose.BOW_AND_ARROW
 				: BipedEntityModel.ArmPose.EMPTY;
-	}
-	@Override
-	public void render(SunkenSkeletonEntityRenderState state, MatrixStack matrixStack, OrderedRenderCommandQueue orderedRenderCommandQueue, CameraRenderState cameraRenderState) {
-		for (ModelPart part : this.model.fans) part.visible = state.showFans;
-		super.render(state, matrixStack, orderedRenderCommandQueue, cameraRenderState);
 	}
 }

@@ -3,9 +3,10 @@
   "package": "fun.wich.mixin",
   "compatibilityLevel": "JAVA_21",
   "mixins": [
-	"SkeletonEntityMixin",
+	"LootTablesMixin",
 	"ParrotEntityMixin",
-	"PersistentProjectileEntityMixin"
+	"PersistentProjectileEntityMixin",
+	"SkeletonEntityMixin"
   ],
   "injectors": {
 	"defaultRequire": 1

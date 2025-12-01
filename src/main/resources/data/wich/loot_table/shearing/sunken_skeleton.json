@@ -1,0 +1,131 @@
+{
+  "type": "minecraft:entity",
+  "pools": [
+	{
+	  "bonus_rolls": 0.0,
+	  "conditions": [
+		{
+		  "condition": "minecraft:entity_properties",
+		  "predicate": { "nbt": "{Variant:0}" },
+		  "entity": "this"
+		}
+	  ],
+	  "entries": [
+		{
+		  "type": "minecraft:item",
+		  "functions": [ { "count": 1, "function": "minecraft:set_count" } ],
+		  "name": "minecraft:bubble_coral",
+		  "weight": 25
+		},
+		{
+		  "type": "minecraft:item",
+		  "functions": [ { "count": 1, "function": "minecraft:set_count" } ],
+		  "name": "minecraft:bubble_coral_fan",
+		  "weight": 75
+		}
+	  ],
+	  "rolls": 1.0
+	},
+	{
+	  "bonus_rolls": 0.0,
+	  "conditions": [
+		{
+		  "condition": "minecraft:entity_properties",
+		  "predicate": { "nbt": "{Variant:1}" },
+		  "entity": "this"
+		}
+	  ],
+	  "entries": [
+		{
+		  "type": "minecraft:item",
+		  "functions": [ { "count": 1, "function": "minecraft:set_count" } ],
+		  "name": "minecraft:fire_coral",
+		  "weight": 25
+		},
+		{
+		  "type": "minecraft:item",
+		  "functions": [ { "count": 1, "function": "minecraft:set_count" } ],
+		  "name": "minecraft:fire_coral_fan",
+		  "weight": 75
+		}
+	  ],
+	  "rolls": 1.0
+	},
+	{
+	  "bonus_rolls": 0.0,
+	  "conditions": [
+		{
+		  "condition": "minecraft:entity_properties",
+		  "predicate": { "nbt": "{Variant:2}" },
+		  "entity": "this"
+		}
+	  ],
+	  "entries": [
+		{
+		  "type": "minecraft:item",
+		  "functions": [ { "count": 1, "function": "minecraft:set_count" } ],
+		  "name": "minecraft:horn_coral",
+		  "weight": 25
+		},
+		{
+		  "type": "minecraft:item",
+		  "functions": [ { "count": 1, "function": "minecraft:set_count" } ],
+		  "name": "minecraft:horn_coral_fan",
+		  "weight": 75
+		}
+	  ],
+	  "rolls": 1.0
+	},
+	{
+	  "bonus_rolls": 0.0,
+	  "conditions": [
+		{
+		  "condition": "minecraft:entity_properties",
+		  "predicate": { "nbt": "{Variant:3}" },
+		  "entity": "this"
+		}
+	  ],
+	  "entries": [
+		{
+		  "type": "minecraft:item",
+		  "functions": [ { "count": 1, "function": "minecraft:set_count" } ],
+		  "name": "minecraft:tube_coral",
+		  "weight": 25
+		},
+		{
+		  "type": "minecraft:item",
+		  "functions": [ { "count": 1, "function": "minecraft:set_count" } ],
+		  "name": "minecraft:tube_coral_fan",
+		  "weight": 75
+		}
+	  ],
+	  "rolls": 1.0
+	},
+	{
+	  "bonus_rolls": 0.0,
+	  "conditions": [
+		{
+		  "condition": "minecraft:entity_properties",
+		  "predicate": { "nbt": "{Variant:4}" },
+		  "entity": "this"
+		}
+	  ],
+	  "entries": [
+		{
+		  "type": "minecraft:item",
+		  "functions": [ { "count": 1, "function": "minecraft:set_count" } ],
+		  "name": "minecraft:brain_coral",
+		  "weight": 25
+		},
+		{
+		  "type": "minecraft:item",
+		  "functions": [ { "count": 1, "function": "minecraft:set_count" } ],
+		  "name": "minecraft:brain_coral_fan",
+		  "weight": 75
+		}
+	  ],
+	  "rolls": 1.0
+	}
+  ],
+  "random_sequence": "wich:entities/sunken_skeleton"
+}

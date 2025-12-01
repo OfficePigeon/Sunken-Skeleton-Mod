@@ -51,6 +51,11 @@
 		{ "condition": "minecraft:killed_by_player" },
 		{
 		  "condition": "minecraft:entity_properties",
+		  "predicate": { "nbt": "{sheared:false}" },
+		  "entity": "this"
+		},
+		{
+		  "condition": "minecraft:entity_properties",
 		  "predicate": { "nbt": "{Variant:0}" },
 		  "entity": "this"
 		}
@@ -99,6 +104,11 @@
 	  "bonus_rolls": 0.0,
 	  "conditions": [
 		{ "condition": "minecraft:killed_by_player" },
+		{
+		  "condition": "minecraft:entity_properties",
+		  "predicate": { "nbt": "{sheared:false}" },
+		  "entity": "this"
+		},
 		{
 		  "condition": "minecraft:entity_properties",
 		  "predicate": { "nbt": "{Variant:1}" },
@@ -151,6 +161,11 @@
 		{ "condition": "minecraft:killed_by_player" },
 		{
 		  "condition": "minecraft:entity_properties",
+		  "predicate": { "nbt": "{sheared:false}" },
+		  "entity": "this"
+		},
+		{
+		  "condition": "minecraft:entity_properties",
 		  "predicate": { "nbt": "{Variant:2}" },
 		  "entity": "this"
 		}
@@ -190,6 +205,116 @@
 			}
 		  ],
 		  "name": "minecraft:horn_coral_fan",
+		  "weight": 75
+		}
+	  ],
+	  "rolls": 1.0
+	},
+	{
+	  "bonus_rolls": 0.0,
+	  "conditions": [
+		{ "condition": "minecraft:killed_by_player" },
+		{
+		  "condition": "minecraft:entity_properties",
+		  "predicate": { "nbt": "{sheared:false}" },
+		  "entity": "this"
+		},
+		{
+		  "condition": "minecraft:entity_properties",
+		  "predicate": { "nbt": "{Variant:3}" },
+		  "entity": "this"
+		}
+	  ],
+	  "entries": [
+		{
+		  "type": "minecraft:item",
+		  "functions": [
+			{
+			  "add": false,
+			  "count": { "type": "minecraft:uniform", "max": 1.0, "min": 0.0 },
+			  "function": "minecraft:set_count"
+			},
+			{
+			  "count": { "type": "minecraft:uniform", "max": 1.0, "min": 0.0 },
+			  "enchantment": "minecraft:looting",
+			  "function": "minecraft:enchanted_count_increase",
+			  "limit": 1
+			}
+		  ],
+		  "name": "minecraft:tube_coral",
+		  "weight": 25
+		},
+		{
+		  "type": "minecraft:item",
+		  "functions": [
+			{
+			  "add": false,
+			  "count": { "type": "minecraft:uniform", "max": 1.0, "min": 0.0 },
+			  "function": "minecraft:set_count"
+			},
+			{
+			  "count": { "type": "minecraft:uniform", "max": 1.0, "min": 0.0 },
+			  "enchantment": "minecraft:looting",
+			  "function": "minecraft:enchanted_count_increase",
+			  "limit": 1
+			}
+		  ],
+		  "name": "minecraft:tube_coral_fan",
+		  "weight": 75
+		}
+	  ],
+	  "rolls": 1.0
+	},
+	{
+	  "bonus_rolls": 0.0,
+	  "conditions": [
+		{ "condition": "minecraft:killed_by_player" },
+		{
+		  "condition": "minecraft:entity_properties",
+		  "predicate": { "nbt": "{sheared:false}" },
+		  "entity": "this"
+		},
+		{
+		  "condition": "minecraft:entity_properties",
+		  "predicate": { "nbt": "{Variant:4}" },
+		  "entity": "this"
+		}
+	  ],
+	  "entries": [
+		{
+		  "type": "minecraft:item",
+		  "functions": [
+			{
+			  "add": false,
+			  "count": { "type": "minecraft:uniform", "max": 1.0, "min": 0.0 },
+			  "function": "minecraft:set_count"
+			},
+			{
+			  "count": { "type": "minecraft:uniform", "max": 1.0, "min": 0.0 },
+			  "enchantment": "minecraft:looting",
+			  "function": "minecraft:enchanted_count_increase",
+			  "limit": 1
+			}
+		  ],
+		  "name": "minecraft:brain_coral",
+		  "weight": 25
+		},
+		{
+		  "type": "minecraft:item",
+		  "functions": [
+			{
+			  "add": false,
+			  "count": { "type": "minecraft:uniform", "max": 1.0, "min": 0.0 },
+			  "function": "minecraft:set_count"
+			},
+			{
+			  "count": { "type": "minecraft:uniform", "max": 1.0, "min": 0.0 },
+			  "enchantment": "minecraft:looting",
+			  "function": "minecraft:enchanted_count_increase",
+			  "limit": 1
+			}
+		  ],
+		  "name": "minecraft:brain_coral_fan",
 		  "weight": 75
 		}
 	  ],
