@@ -20,7 +20,7 @@ import java.util.Map;
 import java.util.function.Predicate;
 
 @Mixin(ParrotEntity.class)
-public class ParrotEntityMixin {
+public class SunkenSkeletons_ParrotEntityMixin {
 	@Shadow
 	@Final
 	static Map<EntityType<?>, SoundEvent> MOB_SOUNDS;

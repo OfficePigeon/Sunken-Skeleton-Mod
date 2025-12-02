@@ -1,6 +1,6 @@
 package fun.wich;
 
-import fun.wich.mixin.LootTablesMixin;
+import fun.wich.mixin.SunkenSkeletons_LootTablesMixin;
 import net.fabricmc.api.ModInitializer;
 
 import net.fabricmc.fabric.api.biome.v1.BiomeModifications;
@@ -66,7 +66,7 @@ public class SunkenSkeletonMod implements ModInitializer {
 		Registry.register(Registries.ITEM, key, item);
 		return item;
 	}
-	public static final RegistryKey<LootTable> SUNKEN_SKELETON_SHEARING = LootTablesMixin.registerLootTable(RegistryKey.of(RegistryKeys.LOOT_TABLE, Identifier.of(MOD_ID, "shearing/sunken_skeleton")));
+	public static final RegistryKey<LootTable> SUNKEN_SKELETON_SHEARING = SunkenSkeletons_LootTablesMixin.registerLootTable(RegistryKey.of(RegistryKeys.LOOT_TABLE, Identifier.of(MOD_ID, "shearing/sunken_skeleton")));
 
 	@Override
 	public void onInitialize() {

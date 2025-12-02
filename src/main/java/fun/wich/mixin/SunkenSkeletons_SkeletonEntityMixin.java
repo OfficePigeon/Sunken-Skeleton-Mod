@@ -25,14 +25,14 @@ import org.spongepowered.asm.mixin.injection.callback.CallbackInfo;
 import org.spongepowered.asm.mixin.injection.callback.CallbackInfoReturnable;
 
 @Mixin(SkeletonEntity.class)
-public abstract class SkeletonEntityMixin extends AbstractSkeletonEntity {
+public abstract class SunkenSkeletons_SkeletonEntityMixin extends AbstractSkeletonEntity {
 	@Unique @SuppressWarnings("WrongEntityDataParameterClass")
 	private static final TrackedData<Boolean> SKELETON_CONVERTING_IN_WATER = DataTracker.registerData(SkeletonEntity.class, TrackedDataHandlerRegistry.BOOLEAN);
 	@Unique
 	private int inWaterTime;
 	@Unique
 	private int ticksUntilWaterConversion;
-	protected SkeletonEntityMixin(EntityType<? extends AbstractSkeletonEntity> entityType, World world) {
+	protected SunkenSkeletons_SkeletonEntityMixin(EntityType<? extends AbstractSkeletonEntity> entityType, World world) {
 		super(entityType, world);
 	}
 	@Inject(method="initDataTracker", at=@At("TAIL"))

@@ -9,7 +9,7 @@ import org.spongepowered.asm.mixin.injection.Inject;
 import org.spongepowered.asm.mixin.injection.callback.CallbackInfoReturnable;
 
 @Mixin(PersistentProjectileEntity.class)
-public class PersistentProjectileEntityMixin implements WaterDragControllable {
+public class SunkenSkeletons_PersistentProjectileEntityMixin implements WaterDragControllable {
 	@Unique
 	private float waterDrag = Float.NaN;
 	@Inject(method="getDragInWater", at=@At("HEAD"), cancellable=true)
