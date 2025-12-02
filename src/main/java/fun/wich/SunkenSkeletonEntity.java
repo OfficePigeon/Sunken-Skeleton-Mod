@@ -11,13 +11,16 @@ import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.entity.projectile.PersistentProjectileEntity;
 import net.minecraft.item.ItemStack;
 import net.minecraft.item.Items;
+import net.minecraft.loot.LootTable;
+import net.minecraft.loot.context.LootContextParameterSet;
+import net.minecraft.loot.context.LootContextParameters;
+import net.minecraft.loot.context.LootContextTypes;
+import net.minecraft.nbt.NbtCompound;
 import net.minecraft.registry.entry.RegistryEntry;
 import net.minecraft.registry.tag.FluidTags;
 import net.minecraft.server.world.ServerWorld;
 import net.minecraft.sound.SoundCategory;
 import net.minecraft.sound.SoundEvent;
-import net.minecraft.storage.ReadView;
-import net.minecraft.storage.WriteView;
 import net.minecraft.util.ActionResult;
 import net.minecraft.util.Hand;
 import net.minecraft.util.math.BlockPos;
@@ -50,16 +53,16 @@ public class SunkenSkeletonEntity extends SkeletonEntity implements Shearable {
 		builder.add(VARIANT, 0);
 	}
 	@Override
-	protected void writeCustomData(WriteView view) {
-		super.writeCustomData(view);
+	public void writeCustomDataToNbt(NbtCompound view) {
+		super.writeCustomDataToNbt(view);
 		view.putBoolean("sheared", this.isSheared());
 		view.putInt("Variant", this.getVariant());
 	}
 	@Override
-	protected void readCustomData(ReadView view) {
-		super.readCustomData(view);
-		this.setSheared(view.getBoolean("sheared", false));
-		this.setVariant(view.getInt("Variant", 0));
+	public void readCustomDataFromNbt(NbtCompound view) {
+		super.readCustomDataFromNbt(view);
+		this.setSheared(view.contains("sheared") && view.getBoolean("sheared"));
+		this.setVariant(view.contains("Variant") ? view.getInt("Variant") : 0);
 	}
 	@Override protected SoundEvent getAmbientSound() { return SunkenSkeletonMod.ENTITY_SUNKEN_SKELETON_AMBIENT; }
 	@Override protected SoundEvent getDeathSound() { return SunkenSkeletonMod.ENTITY_SUNKEN_SKELETON_DEATH; }
@@ -71,7 +74,7 @@ public class SunkenSkeletonEntity extends SkeletonEntity implements Shearable {
 		if (persistentProjectileEntity instanceof WaterDragControllable dragControllable) dragControllable.WaterDragControllable_SetDragInWater(0.99f);
 		return persistentProjectileEntity;
 	}
-	public static boolean canSpawn(EntityType<SunkenSkeletonEntity> type, ServerWorldAccess world, SpawnReason spawnReason, BlockPos pos, Random random) {
+	public static boolean canSpawn(EntityType<SunkenSkeletonEntity> ignoredType, ServerWorldAccess world, SpawnReason spawnReason, BlockPos pos, Random random) {
 		if (!world.getFluidState(pos.down()).isIn(FluidTags.WATER) && !SpawnReason.isAnySpawner(spawnReason)) return false;
 		RegistryEntry<Biome> registryEntry = world.getBiome(pos);
 		boolean bl = world.getDifficulty() != Difficulty.PEACEFUL
@@ -84,30 +87,34 @@ public class SunkenSkeletonEntity extends SkeletonEntity implements Shearable {
 		}
 		else return true;
 	}
+	@SuppressWarnings("deprecation")
 	public static boolean isValidSpawnDepth(WorldAccess world, BlockPos pos) { return pos.getY() < world.getSeaLevel() - 5; }
 	@Override public boolean isPushedByFluids() { return !this.isSwimming(); }
-	@Override public boolean canBreatheInWater() { return true; }
 	@Override
 	public ActionResult interactMob(PlayerEntity player, Hand hand) {
 		ItemStack itemStack = player.getStackInHand(hand);
 		if (itemStack.isOf(Items.SHEARS) && this.isShearable()) {
-			if (this.getEntityWorld() instanceof ServerWorld serverWorld) {
-				this.sheared(serverWorld, SoundCategory.PLAYERS, itemStack);
-				this.emitGameEvent(GameEvent.SHEAR, player);
-				itemStack.damage(1, player, hand.getEquipmentSlot());
-			}
+			this.sheared(SoundCategory.PLAYERS);
+			this.emitGameEvent(GameEvent.SHEAR, player);
+			if (!this.getWorld().isClient) itemStack.damage(1, player, getSlotForHand(hand));
 			return ActionResult.SUCCESS;
 		}
 		else return super.interactMob(player, hand);
 	}
 	@Override
-	public void sheared(ServerWorld world, SoundCategory shearedSoundCategory, ItemStack shears) {
-		world.playSoundFromEntity(null, this, SunkenSkeletonMod.ENTITY_SUNKEN_SKELETON_SHEAR, shearedSoundCategory, 1.0F, 1.0F);
-		this.forEachShearedItem(world, SunkenSkeletonMod.SUNKEN_SKELETON_SHEARING, shears, (worldx, stack) -> {
-			for (int i = 0; i < stack.getCount(); ++i) {
-				worldx.spawnEntity(new ItemEntity(this.getEntityWorld(), this.getX(), this.getBodyY(1), this.getZ(), stack.copyWithCount(1)));
+	public void sheared(SoundCategory shearedSoundCategory) {
+		World world = this.getEntityWorld();
+		world.playSoundFromEntity(null, this, SunkenSkeletonMod.ENTITY_SUNKEN_SKELETON_SHEAR, shearedSoundCategory, 1, 1);
+		if (world instanceof ServerWorld serverWorld) {
+			LootTable lootTable = serverWorld.getServer().getReloadableRegistries().getLootTable(SunkenSkeletonMod.SUNKEN_SKELETON_SHEARING);
+			LootContextParameterSet lootContextParameterSet = new LootContextParameterSet.Builder(serverWorld)
+					.add(LootContextParameters.ORIGIN, this.getPos())
+					.add(LootContextParameters.THIS_ENTITY, this)
+					.build(LootContextTypes.SHEARING);
+			for (ItemStack itemStack : lootTable.generateLoot(lootContextParameterSet)) {
+				this.dropStack(itemStack, this.getHeight());
 			}
-		});
+		}
 		this.setSheared(true);
 	}
 	@Override public boolean isShearable() { return !this.isSheared() && this.isAlive(); }

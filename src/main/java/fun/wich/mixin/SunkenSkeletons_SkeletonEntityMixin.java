@@ -1,19 +1,18 @@
 package fun.wich.mixin;
 
+import fun.wich.SunkenSkeletonEntity;
 import fun.wich.SunkenSkeletonMod;
 import fun.wich.SunkenSkeletonVariant;
 import net.minecraft.entity.EntityType;
-import net.minecraft.entity.conversion.EntityConversionContext;
 import net.minecraft.entity.data.DataTracker;
 import net.minecraft.entity.data.TrackedData;
 import net.minecraft.entity.data.TrackedDataHandlerRegistry;
 import net.minecraft.entity.mob.AbstractSkeletonEntity;
 import net.minecraft.entity.mob.SkeletonEntity;
+import net.minecraft.nbt.NbtCompound;
 import net.minecraft.registry.entry.RegistryEntry;
 import net.minecraft.registry.tag.FluidTags;
 import net.minecraft.sound.SoundCategory;
-import net.minecraft.storage.ReadView;
-import net.minecraft.storage.WriteView;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.world.World;
 import net.minecraft.world.biome.Biome;
@@ -43,15 +42,15 @@ public abstract class SunkenSkeletons_SkeletonEntityMixin extends AbstractSkelet
 	public void Mixin_IsShaking(CallbackInfoReturnable<Boolean> cir) {
 		if (this.getDataTracker().get(SKELETON_CONVERTING_IN_WATER)) cir.setReturnValue(true);
 	}
-	@Inject(method="writeCustomData", at=@At("TAIL"))
-	protected void Mixin_WriteCustomData(WriteView view, CallbackInfo ci) {
+	@Inject(method="writeCustomDataToNbt", at=@At("TAIL"))
+	protected void Mixin_WriteCustomData(NbtCompound view, CallbackInfo ci) {
 		view.putInt("InWaterTime", this.isTouchingWater() ? this.inWaterTime : -1);
 		view.putInt("WaterConversionTime", this.getDataTracker().get(SKELETON_CONVERTING_IN_WATER) ? this.ticksUntilWaterConversion : -1);
 	}
-	@Inject(method="readCustomData", at=@At("TAIL"))
-	protected void Mixin_ReadCustomData(ReadView view, CallbackInfo ci) {
-		this.inWaterTime = view.getInt("InWaterTime", -1);
-		int i = view.getInt("WaterConversionTime", -1);
+	@Inject(method="readCustomDataFromNbt", at=@At("TAIL"))
+	protected void Mixin_ReadCustomData(NbtCompound view, CallbackInfo ci) {
+		this.inWaterTime = view.contains("InWaterTime") ? view.getInt("InWaterTime") : -1;
+		int i = view.contains("WaterConversionTime") ? view.getInt("WaterConversionTime") : -1;
 		if (i < 0) this.ticksUntilWaterConversion = -1;
 		this.getDataTracker().set(SKELETON_CONVERTING_IN_WATER, false);
 	}
@@ -66,12 +65,11 @@ public abstract class SunkenSkeletons_SkeletonEntityMixin extends AbstractSkelet
 				if (this.getDataTracker().get(SKELETON_CONVERTING_IN_WATER)) {
 					--this.ticksUntilWaterConversion;
 					if (this.ticksUntilWaterConversion < 0) {
-						this.convertTo(SunkenSkeletonMod.SUNKEN_SKELETON, EntityConversionContext.create(this, true, true), sunkenSkeleton -> {
-							if (!this.isSilent()) {
-								this.getEntityWorld().playSound(null, this.getBlockPos(), SunkenSkeletonMod.ENTITY_SKELETON_CONVERTED_TO_SUNKEN_SKELETON, SoundCategory.HOSTILE, 2.0f, (random.nextFloat() - random.nextFloat()) * 0.2f + 1);
-							}
-							sunkenSkeleton.setVariant(random.nextInt(SunkenSkeletonVariant.values().length));
-						});
+						SunkenSkeletonEntity sunkenSkeleton = this.convertTo(SunkenSkeletonMod.SUNKEN_SKELETON, true);
+						if (!this.isSilent()) {
+							this.getEntityWorld().playSound(null, this.getBlockPos(), SunkenSkeletonMod.ENTITY_SKELETON_CONVERTED_TO_SUNKEN_SKELETON, SoundCategory.HOSTILE, 2.0f, (random.nextFloat() - random.nextFloat()) * 0.2f + 1);
+						}
+						if (sunkenSkeleton != null) sunkenSkeleton.setVariant(random.nextInt(SunkenSkeletonVariant.values().length));
 					}
 				}
 				else {
