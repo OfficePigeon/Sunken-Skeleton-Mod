@@ -16,6 +16,5 @@ public class SunkenSkeletons_PersistentProjectileEntityMixin implements WaterDra
 	private void OverrideGetDragInWater(CallbackInfoReturnable<Float> cir) {
 		if (!Float.isNaN(waterDrag)) cir.setReturnValue(waterDrag);
 	}
-	@Override public float WaterDragControllable_GetDragInWater() { return this.waterDrag; }
 	@Override public void WaterDragControllable_SetDragInWater(float drag) { this.waterDrag = drag; }
 }

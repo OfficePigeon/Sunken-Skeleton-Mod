@@ -21,9 +21,7 @@ import java.util.function.Predicate;
 
 @Mixin(ParrotEntity.class)
 public class SunkenSkeletons_ParrotEntityMixin {
-	@Shadow
-	@Final
-	static Map<EntityType<?>, SoundEvent> MOB_SOUNDS;
+	@Shadow @Final static Map<EntityType<?>, SoundEvent> MOB_SOUNDS;
 	@Shadow private static SoundEvent getSound(EntityType<?> imitate) { return null; }
 	@Unique
 	private static final Predicate<MobEntity> CAN_IMITATE_NEW = new Predicate<>(){

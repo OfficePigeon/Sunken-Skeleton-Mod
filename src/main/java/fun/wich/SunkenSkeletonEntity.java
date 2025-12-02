@@ -49,33 +49,28 @@ public class SunkenSkeletonEntity extends SkeletonEntity implements Shearable {
 		builder.add(SHEARED, false);
 		builder.add(VARIANT, 0);
 	}
-
 	@Override
 	protected void writeCustomData(WriteView view) {
 		super.writeCustomData(view);
 		view.putBoolean("sheared", this.isSheared());
 		view.putInt("Variant", this.getVariant());
 	}
-
 	@Override
 	protected void readCustomData(ReadView view) {
 		super.readCustomData(view);
 		this.setSheared(view.getBoolean("sheared", false));
 		this.setVariant(view.getInt("Variant", 0));
 	}
-
 	@Override protected SoundEvent getAmbientSound() { return SunkenSkeletonMod.ENTITY_SUNKEN_SKELETON_AMBIENT; }
 	@Override protected SoundEvent getDeathSound() { return SunkenSkeletonMod.ENTITY_SUNKEN_SKELETON_DEATH; }
 	@Override protected SoundEvent getHurtSound(DamageSource source) { return SunkenSkeletonMod.ENTITY_SUNKEN_SKELETON_HURT; }
 	@Override protected void playStepSound(BlockPos pos, BlockState state) { this.playSound(SunkenSkeletonMod.ENTITY_SUNKEN_SKELETON_STEP, 0.15f, 1.0f); }
-
 	@Override
 	protected PersistentProjectileEntity createArrowProjectile(ItemStack arrow, float damageModifier, ItemStack shotFrom) {
 		PersistentProjectileEntity persistentProjectileEntity = super.createArrowProjectile(arrow, damageModifier, shotFrom);
 		if (persistentProjectileEntity instanceof WaterDragControllable dragControllable) dragControllable.WaterDragControllable_SetDragInWater(0.99f);
 		return persistentProjectileEntity;
 	}
-
 	public static boolean canSpawn(EntityType<SunkenSkeletonEntity> type, ServerWorldAccess world, SpawnReason spawnReason, BlockPos pos, Random random) {
 		if (!world.getFluidState(pos.down()).isIn(FluidTags.WATER) && !SpawnReason.isAnySpawner(spawnReason)) return false;
 		RegistryEntry<Biome> registryEntry = world.getBiome(pos);
@@ -90,10 +85,8 @@ public class SunkenSkeletonEntity extends SkeletonEntity implements Shearable {
 		else return true;
 	}
 	public static boolean isValidSpawnDepth(WorldAccess world, BlockPos pos) { return pos.getY() < world.getSeaLevel() - 5; }
-
 	@Override public boolean isPushedByFluids() { return !this.isSwimming(); }
 	@Override public boolean canBreatheInWater() { return true; }
-
 	@Override
 	public ActionResult interactMob(PlayerEntity player, Hand hand) {
 		ItemStack itemStack = player.getStackInHand(hand);
