@@ -11,10 +11,7 @@ import net.minecraft.util.Identifier;
 
 @Environment(EnvType.CLIENT)
 public class SunkenSkeletonsClient implements ClientModInitializer {
-	public static final EntityModelLayer SUNKEN_SKELETON = MakeModelLayer();
-	private static EntityModelLayer MakeModelLayer() {
-		return new EntityModelLayer(Identifier.of(SunkenSkeletonMod.MOD_ID, "sunken_skeleton"), "main");
-	}
+	public static final EntityModelLayer SUNKEN_SKELETON = new EntityModelLayer(Identifier.of(SunkenSkeletonMod.MOD_ID, "sunken_skeleton"), "main");
 	@Override
 	public void onInitializeClient() {
 		EntityModelLayerRegistry.registerModelLayer(SUNKEN_SKELETON, SunkenSkeletonEntityModel::getTexturedModelData);
