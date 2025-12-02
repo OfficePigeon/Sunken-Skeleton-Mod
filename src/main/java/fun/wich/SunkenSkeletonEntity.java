@@ -102,7 +102,7 @@ public class SunkenSkeletonEntity extends SkeletonEntity implements Shearable {
 	}
 	@Override
 	public void sheared(ServerWorld world, SoundCategory shearedSoundCategory, ItemStack shears) {
-		world.playSoundFromEntity(null, this, SunkenSkeletonMod.ENTITY_SUNKEN_SKELETON_SHEAR, shearedSoundCategory, 1.0F, 1.0F);
+		world.playSoundFromEntity(null, this, SunkenSkeletonMod.ENTITY_SUNKEN_SKELETON_SHEAR, shearedSoundCategory, 1, 1);
 		this.forEachShearedItem(world, SunkenSkeletonMod.SUNKEN_SKELETON_SHEARING, shears, (worldx, stack) -> {
 			for (int i = 0; i < stack.getCount(); ++i) {
 				worldx.spawnEntity(new ItemEntity(this.getEntityWorld(), this.getX(), this.getBodyY(1), this.getZ(), stack.copyWithCount(1)));

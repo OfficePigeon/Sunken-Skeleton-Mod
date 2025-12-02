@@ -22,7 +22,7 @@ public class SunkenSkeletonEntityModel extends SkeletonEntityModel<SunkenSkeleto
 	public static TexturedModelData getTexturedModelData() {
 		ModelData modelData = getModelData(Dilation.NONE, 0);
 		ModelPartData root = modelData.getRoot();
-		ModelPartData head = root.addChild(EntityModelPartNames.HEAD, ModelPartBuilder.create().uv(0, 0).cuboid(-4, -8, -4, 8, 8, 8), ModelTransform.origin(0, 0, 0));
+		ModelPartData head = root.addChild(EntityModelPartNames.HEAD, ModelPartBuilder.create().uv(0, 0).cuboid(-4, -8, -4, 8, 8, 8), ModelTransform.NONE);
 		head.addChild("top_fan", ModelPartBuilder.create().uv(24, 0).cuboid(-1, -16, -4, 9, 8, 0), ModelTransform.NONE);
 		head.addChild("side_fan", ModelPartBuilder.create().uv(32, 8).cuboid(4, -8, -4, 4, 2, 0), ModelTransform.NONE);
 		head.addChild("wrap", ModelPartBuilder.create().uv(28, 12).cuboid(-1, -3, 2, 6, 0, 4), ModelTransform.NONE);

@@ -19,11 +19,8 @@ import net.minecraft.util.Identifier;
 @Environment(EnvType.CLIENT)
 public class SunkenSkeletonEntityRenderer extends BipedEntityRenderer<SunkenSkeletonEntity, SunkenSkeletonEntityRenderState, SunkenSkeletonEntityModel> {
 	public SunkenSkeletonEntityRenderer(EntityRendererFactory.Context context) {
-		this(context, EntityModelLayers.SKELETON_EQUIPMENT, new SunkenSkeletonEntityModel(context.getPart(SunkenSkeletonsClient.SUNKEN_SKELETON)));
-	}
-	public SunkenSkeletonEntityRenderer(EntityRendererFactory.Context context, EquipmentModelData<EntityModelLayer> equipmentModelData, SunkenSkeletonEntityModel skeletonEntityModel) {
-		super(context, skeletonEntityModel, 0.5F);
-		this.addFeature(new ArmorFeatureRenderer<>(this, EquipmentModelData.mapToEntityModel(equipmentModelData, context.getEntityModels(), SkeletonEntityModel::new), context.getEquipmentRenderer()));
+		super(context, new SunkenSkeletonEntityModel(context.getPart(SunkenSkeletonsClient.SUNKEN_SKELETON)), 0.5F);
+		this.addFeature(new ArmorFeatureRenderer<>(this, EquipmentModelData.mapToEntityModel(EntityModelLayers.SKELETON_EQUIPMENT, context.getEntityModels(), SkeletonEntityModel::new), context.getEquipmentRenderer()));
 	}
 	@Override
 	public Identifier getTexture(SunkenSkeletonEntityRenderState skeletonEntityRenderState) {
@@ -48,9 +45,7 @@ public class SunkenSkeletonEntityRenderer extends BipedEntityRenderer<SunkenSkel
 	@Override
 	protected boolean isShaking(SunkenSkeletonEntityRenderState state) { return state.shaking; }
 	@Override
-	protected BipedEntityModel.ArmPose getArmPose(SunkenSkeletonEntity abstractSkeletonEntity, Arm arm) {
-		return abstractSkeletonEntity.getMainArm() == arm && abstractSkeletonEntity.isAttacking() && abstractSkeletonEntity.getMainHandStack().isOf(Items.BOW)
-				? BipedEntityModel.ArmPose.BOW_AND_ARROW
-				: BipedEntityModel.ArmPose.EMPTY;
+	protected BipedEntityModel.ArmPose getArmPose(SunkenSkeletonEntity state, Arm arm) {
+		return state.getMainArm() == arm && state.isAttacking() && state.getMainHandStack().isOf(Items.BOW) ? BipedEntityModel.ArmPose.BOW_AND_ARROW : BipedEntityModel.ArmPose.EMPTY;
 	}
 }
