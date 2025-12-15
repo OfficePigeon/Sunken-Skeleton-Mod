@@ -1,0 +1,10 @@
+{
+    "entity.wich.sunken_skeleton": "Затонувший скелет",
+    "item.wich.sunken_skeleton_spawn_egg": "Яйцо призыва затонувшего скелета",
+    "subtitles.entity.skeleton.converted_to_sunken_skeleton": "Скелет превратился в затонувшего скелета",
+    "subtitles.entity.sunken_skeleton.ambient": "Затонувший скелет стучит костями",
+    "subtitles.entity.sunken_skeleton.death": "Затонувший скелет погибает",
+    "subtitles.entity.sunken_skeleton.hurt": "Затонувший скелет ранен",
+    "subtitles.entity.sunken_skeleton.step": "Шаги затонувшего скелета",
+    "subtitles.entity.parrot.imitate.sunken_skeleton": "Попугай подражает затонувшему скелету"
+  }
