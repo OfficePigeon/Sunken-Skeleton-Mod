@@ -1,0 +1,10 @@
+{
+  "entity.wich.sunken_skeleton": "沉溺骷髅",
+  "item.wich.sunken_skeleton_spawn_egg": "沉溺骷髅刷怪蛋",
+  "subtitles.entity.skeleton.converted_to_sunken_skeleton": "骷髅：转化为沉溺骷髅",
+  "subtitles.entity.sunken_skeleton.ambient": "沉溺骷髅：咯咯声",
+  "subtitles.entity.sunken_skeleton.death": "沉溺骷髅：死亡",
+  "subtitles.entity.sunken_skeleton.hurt": "沉溺骷髅：受伤",
+  "subtitles.entity.sunken_skeleton.step": "脚步声",
+  "subtitles.entity.parrot.imitate.sunken_skeleton": "鹦鹉：咯咯声"
+}
