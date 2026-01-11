@@ -1,5 +1,5 @@
 package fun.wich;
 
-public interface WaterDragControllable {
+public interface SunkenSkeletonWaterDragControllable {
 	void WaterDragControllable_SetDragInWater(float drag);
 }
