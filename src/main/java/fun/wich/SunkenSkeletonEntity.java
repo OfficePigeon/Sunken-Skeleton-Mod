@@ -152,7 +152,6 @@ public class SunkenSkeletonEntity extends SkeletonEntity implements Shearable {
 		}
 		return false;
 	}
-	@Override public boolean canBreatheInWater() { return true; }
 	@Override
 	public ActionResult interactMob(PlayerEntity player, Hand hand) {
 		ItemStack itemStack = player.getStackInHand(hand);
