@@ -7,7 +7,8 @@
 	"authors": [ "dovewich" ],
 	"contact": {
 		"homepage": "https://www.wich.fun/",
-		"sources": "https://github.com/OfficePigeon/Sunken-Skeleton-Mod"
+		"sources": "https://github.com/OfficePigeon/Sunken-Skeleton-Mod",
+		"issues": "https://github.com/OfficePigeon/Sunken-Skeleton-Mod/issues"
 	},
 	"license": "",
 	"icon": "assets/wich/icon.png",
